@@ -9,9 +9,6 @@ const SALT = process.env.AUTH_SALT
 
 const login = async (req, res) => {
   try {
-    await body('email').isEmail().normalizeEmail().run(req)
-    await body('password').isLength({ min: 8 }).trim().escape().run(req)
-
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -80,7 +77,7 @@ const login = async (req, res) => {
     console.error(error)
     return res.status(500).json({
       success: false,
-      message: 'An error occurred\n while logging in',
+      message: 'An error occurred while logging in',
       error: error.message,
     })
   }
@@ -211,6 +208,7 @@ const adminSignup = async (req, res) => {
 }
 
 const nodemailer = require('nodemailer')
+const { log } = require('console')
 
 let transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -270,7 +268,7 @@ const forgetPassword = async (req, res) => {
   }
 }
 
-const chekCode = async (req, res) => {
+const checkCode = async (req, res) => {
   try {
     const usermail = req.params.email.trim()
     const resetCode = req.body.resetCode
@@ -770,7 +768,7 @@ const auth = {
   signup,
   adminSignup,
   forgetPassword,
-  chekCode,
+  checkCode,
   changePassword,
 }
 

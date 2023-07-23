@@ -3,27 +3,38 @@ import Input from '../ui/Input'
 import PasswordInput from '../ui/PasswordInput'
 import { useFormik } from 'formik'
 import { validateLogin } from '../../Validations'
-import axios from '../../axios/axios'
+import api from '../../axios/axios'
+import { useState } from 'react'
 
 const LoginForm = () => {
-  const { handleChange, handleBlur, values, errors, touched, handleSubmit } =
-    useFormik({
-      initialValues: {
-        email: '',
-        password: '',
-      },
-      validationSchema: validateLogin,
-      onSubmit: () => {
-        axios
-          .post('/api/auth/signup', values)
-          .then((res) => {
-            console.log(res)
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      },
-    })
+  const [error, setError] = useState(null)
+  const {
+    handleChange,
+    handleBlur,
+    values,
+    errors,
+    touched,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: validateLogin,
+    onSubmit: (values, { resetForm }) => {
+      api
+        .post('/api/auth/login', values)
+        .then((res) => {
+          console.log(res)
+          // save the recived token & state in redux store then navigate the user to the role screen
+        })
+        .catch((err) => {
+          setError(err.response.data.message)
+          resetForm({ values: '' })
+        })
+    },
+  })
 
   return (
     <form className="w-[450px] p-3 mx-4 mt-10" onSubmit={handleSubmit}>
@@ -54,6 +65,7 @@ const LoginForm = () => {
         onBlur={handleBlur}
         errorMsg={errors.password}
       />
+      {error && <p className="-mt-2 mb-2 px-2 text-red-600 text-sm">{error}</p>}
       <button
         type="submit"
         className="py-3 w-48 rounded-md bg-lightBlue hover:bg-lightBlue/90 text-white"
