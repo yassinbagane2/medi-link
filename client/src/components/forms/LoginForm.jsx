@@ -9,34 +9,27 @@ import { useNavigate } from 'react-router-dom'
 const LoginForm = () => {
   const navigate = useNavigate()
   const [error, setError] = useState(null)
-  const {
-    handleChange,
-    handleBlur,
-    values,
-    errors,
-    touched,
-    handleSubmit,
-    setFieldValue,
-  } = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: validateLogin,
-    onSubmit: (values, { resetForm }) => {
-      api
-        .post('/api/auth/login', values)
-        .then((res) => {
-          console.log(res)
-          navigate('/dashboard')
-          // save the recived token & state in redux store then navigate the user to the role screen
-        })
-        .catch((err) => {
-          setError(err.response.data.message)
-          resetForm({ values: '' })
-        })
-    },
-  })
+  const { handleChange, handleBlur, values, errors, touched, handleSubmit } =
+    useFormik({
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      validationSchema: validateLogin,
+      onSubmit: (values, { resetForm }) => {
+        api
+          .post('/api/auth/login', values)
+          .then((res) => {
+            console.log(res)
+            navigate('/dashboard')
+            // save the recived token & state in redux store then navigate the user to the role screen
+          })
+          .catch((err) => {
+            setError(err.response.data.message)
+            resetForm({ values: '' })
+          })
+      },
+    })
 
   return (
     <form className="w-[450px] p-3 mx-4 mt-10" onSubmit={handleSubmit}>

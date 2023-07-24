@@ -6,6 +6,7 @@ import { validateSignupUser } from '../../Validations'
 import api from '../../axios/axios'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+
 const PatientSingup = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
@@ -35,8 +36,9 @@ const PatientSingup = () => {
             }, 1000)
           })
           .catch((err) => {
-            setError(err.response.data.error)
+            console.log('err', err)
             setIsLoading(false)
+            setError(err.response?.data?.error || err.message)
           })
       },
     })
@@ -92,7 +94,7 @@ const PatientSingup = () => {
         disabled={isLoading}
       >
         {isLoading ? (
-          <AiOutlineLoading3Quarters className="text-xl font-medium animate-spin" />
+          <AiOutlineLoading3Quarters className="animate-spin" />
         ) : (
           'Join'
         )}

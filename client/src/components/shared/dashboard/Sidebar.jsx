@@ -6,9 +6,15 @@ import {
   BiSolidCalendar,
 } from 'react-icons/bi'
 import { FaUserDoctor } from 'react-icons/fa6'
-const Sidebar = () => {
+const Sidebar = ({ showSidebar, setShowSidebar }) => {
   return (
-    <div className="w-[320px] space-y-40 p-6 min-h-screen border-r border-gray-200">
+    <div
+      className={
+        showSidebar
+          ? 'relative left-0 hidden lg:block w-[320px] space-y-40 p-6 min-h-screen border-r border-gray-200'
+          : 'fixed -left-80 w-[320px] space-y-40 p-6 min-h-screen border-r border-gray-200'
+      }
+    >
       <div>
         <NavLink to={'/dashboard'}>
           <h1 className="text-2xl font-semibold tracking-wider">
