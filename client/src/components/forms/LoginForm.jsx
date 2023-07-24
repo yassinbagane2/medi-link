@@ -5,8 +5,9 @@ import { useFormik } from 'formik'
 import { validateLogin } from '../../Validations'
 import api from '../../axios/axios'
 import { useState } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 const LoginForm = () => {
+  const navigate = useNavigate()
   const [error, setError] = useState(null)
   const {
     handleChange,
@@ -27,6 +28,7 @@ const LoginForm = () => {
         .post('/api/auth/login', values)
         .then((res) => {
           console.log(res)
+          navigate('/dashboard')
           // save the recived token & state in redux store then navigate the user to the role screen
         })
         .catch((err) => {

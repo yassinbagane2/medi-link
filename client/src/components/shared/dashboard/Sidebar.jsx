@@ -35,7 +35,7 @@ const Sidebar = () => {
           </li>
           <li className="py-3">
             <NavLink
-              to={'/doctors'}
+              to={'/dashboard/doctors'}
               className={({ isActive }) =>
                 isActive
                   ? 'flex items-center gap-2 text-lightBlue'
@@ -48,7 +48,7 @@ const Sidebar = () => {
           </li>
           <li className="py-3">
             <NavLink
-              to={'/medical-foler'}
+              to={'/dashboard/medical-folder'}
               className={({ isActive }) =>
                 isActive
                   ? 'flex items-center gap-2 text-lightBlue'
@@ -61,7 +61,7 @@ const Sidebar = () => {
           </li>
           <li className="py-3">
             <NavLink
-              to={'/messages'}
+              to={'/dashboard/messages'}
               className={({ isActive }) =>
                 isActive
                   ? 'flex items-center gap-2 text-lightBlue'
@@ -74,7 +74,7 @@ const Sidebar = () => {
           </li>
           <li className="py-3">
             <NavLink
-              to={'/messages'}
+              to={'/dashboard/appointments'}
               className={({ isActive }) =>
                 isActive
                   ? 'flex items-center gap-2 text-lightBlue'
@@ -82,7 +82,7 @@ const Sidebar = () => {
               }
             >
               <BiSolidCalendar />
-              Schedules
+              Appointments
             </NavLink>
           </li>
         </ul>

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div className="flex items-center justify-between px-8 py-5">
+    <div className="flex items-center justify-between">
       <div className="flex items-center gap-3 text-gray-800">
         <BiMenu className="text-3xl hover:cursor-pointer" />
         <div className="text-xl font-semibold ">Dashboard</div>
