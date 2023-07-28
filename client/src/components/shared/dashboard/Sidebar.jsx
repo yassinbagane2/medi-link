@@ -3,9 +3,8 @@ import {
   BiSolidDashboard,
   BiSolidFolderOpen,
   BiSolidMessage,
-  BiSolidCalendar,
 } from 'react-icons/bi'
-import { FaUserDoctor } from 'react-icons/fa6'
+import { FaUserDoctor, FaCalendar } from 'react-icons/fa6'
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
   return (
     <div
@@ -87,7 +86,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
                   : 'flex items-center gap-2'
               }
             >
-              <BiSolidCalendar />
+              <FaCalendar />
               Appointments
             </NavLink>
           </li>

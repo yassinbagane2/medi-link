@@ -3,7 +3,7 @@ import Sidebar from '../shared/dashboard/Sidebar'
 import Header from '../shared/dashboard/Header'
 import { Outlet } from 'react-router-dom'
 const DashboardLayout = () => {
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(true)
   function toggleSidebar() {
     setShowSidebar(!showSidebar)
   }
@@ -12,7 +12,7 @@ const DashboardLayout = () => {
       <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <div className="flex flex-col w-full px-8 py-5">
         <Header toggleSidebar={toggleSidebar} />
-        <div className="flex items-center justify-center p-10 min-h-[95%]">
+        <div className="py-20 min-h-[95%]">
           <Outlet />
         </div>
       </div>

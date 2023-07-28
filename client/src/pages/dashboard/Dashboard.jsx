@@ -1,66 +1,57 @@
 import { Link } from 'react-router-dom'
+import { FaCalendar, FaUserDoctor, FaMessage, FaPills } from 'react-icons/fa6'
+import { IoMdSettings } from 'react-icons/io'
+import { FaFileMedicalAlt } from 'react-icons/fa'
+const navigations = [
+  {
+    name: 'Appointments',
+    icon: <FaCalendar className="text-8xl text-darkerGray" />,
+    link: 'dashboard/doctors',
+  },
+  {
+    name: 'My doctors',
+    icon: <FaUserDoctor className="text-8xl text-darkerGray" />,
+    link: 'dashboard/doctors',
+  },
+  {
+    name: 'Messages',
+    icon: <FaMessage className="text-8xl text-darkerGray" />,
+    link: 'dashboard/doctors',
+  },
+  {
+    name: 'Metrics',
+    icon: <FaFileMedicalAlt className="text-8xl text-darkerGray" />,
+    link: 'dashboard/doctors',
+  },
+  {
+    name: 'Pills',
+    icon: <FaPills className="text-8xl text-darkerGray" />,
+    link: 'dashboard/doctors',
+  },
+  {
+    name: 'Settings',
+    icon: <IoMdSettings className="text-8xl text-darkerGray" />,
+    link: 'dashboard/doctors',
+  },
+]
+
 const Dashboard = () => {
   return (
-    <div className="p-4 w-full rounded-md bg-white min-h-full">
-      <div className="flex justify-between">
-        <div>
-          <div className="font-semibold text-xl">Hi, Yassin !</div>
-          <p className="text-gray-500">How do you feel today?</p>
-          <div className="mt-3">
-            <div className="font-semibold text-xl">Upcoming appointments</div>
-            <p>
-              No upcoming appointments.{' '}
-              <Link
-                to={'/dashboard/appointments'}
-                className="text-lightBlue underline"
-              >
-                Make one
-              </Link>
-            </p>
-          </div>
-        </div>
-        <div className="h-80 overflow-y-scroll hidden-scroll rounded-md bg-gray-50 w-60 p-3">
-          <div className="font-medium text-sm">Followed doctors</div>
-          <div className="flex gap-2 pt-3">
-            <div className="relative">
-              <img
-                src="/images/doctor-1.avif"
-                className="w-10 h-10 rounded-full object-cover"
-                alt="doctor"
-              />
-              <div className="absolute bottom-0 w-3 h-3 bg-green-600 rounded-full"></div>
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-y-20">
+      {navigations.map((item, index) => {
+        return (
+          <Link
+            key={index}
+            to={item.link}
+            className="flex flex-col items-center gap-y-2"
+          >
+            {item.icon}
+            <div className="text-xl font-medium text-lightBlue">
+              {item.name}
             </div>
-            <div>
-              <Link
-                to="/dashboard/doctor/profile"
-                className="font-bold text-sm"
-              >
-                Youssef MAKNI
-              </Link>
-              <div className="leading-3 text-gray-500 text-xs">Psychologue</div>
-            </div>
-          </div>
-          <div className="flex gap-2 pt-3">
-            <div className="relative">
-              <img
-                src="/images/doctor-2.avif"
-                className="w-10 h-10 rounded-full object-cover"
-                alt="doctor"
-              />
-              <div className="absolute bottom-0 w-3 h-3 bg-green-600 rounded-full"></div>
-            </div>
-            <div>
-              <Link
-                to="/dashboard/doctor/profile"
-                className="font-bold text-sm"
-              >
-                Rania soufi
-              </Link>
-              <div className="leading-3 text-gray-500 text-xs">Dentiste</div>
-            </div>
-          </div>
-        </div>
-      </div>
+          </Link>
+        )
+      })}
     </div>
   )
 }
