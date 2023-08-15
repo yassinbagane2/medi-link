@@ -108,7 +108,7 @@ const Header = ({ toggleSidebar }) => {
         >
           <img
             className="rounded-full h-10 w-10 object-cover"
-            src="images/profile-img.avif"
+            src="/images/profile-img.avif"
             alt="your profile"
           />
           <div className="leading-3">

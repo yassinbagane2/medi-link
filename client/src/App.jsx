@@ -10,7 +10,7 @@ import Doctors from './pages/dashboard/Doctors'
 import MedicalFolder from './pages/dashboard/MedicalFolder'
 import Messages from './pages/dashboard/Messages'
 import Appointments from './pages/dashboard/Appointments'
-
+import MyDoctors from './pages/dashboard/MyDoctors'
 function App() {
   return (
     <>
@@ -24,6 +24,7 @@ function App() {
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="/dashboard/my-doctors" element={<MyDoctors />} />
           <Route path="/dashboard/doctors" element={<Doctors />} />
           <Route path="/dashboard/medical-folder" element={<MedicalFolder />} />
           <Route path="/dashboard/messages" element={<Messages />} />

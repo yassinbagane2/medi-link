@@ -6,47 +6,43 @@ const navigations = [
   {
     name: 'Appointments',
     icon: <FaCalendar className="text-8xl text-darkerGray" />,
-    link: 'dashboard/doctors',
+    link: 'appointments',
   },
   {
     name: 'My doctors',
     icon: <FaUserDoctor className="text-8xl text-darkerGray" />,
-    link: 'dashboard/doctors',
+    link: 'my-doctors',
   },
   {
     name: 'Messages',
     icon: <FaMessage className="text-8xl text-darkerGray" />,
-    link: 'dashboard/doctors',
+    link: 'messages',
   },
   {
     name: 'Metrics',
     icon: <FaFileMedicalAlt className="text-8xl text-darkerGray" />,
-    link: 'dashboard/doctors',
+    link: 'metrics',
   },
   {
     name: 'Pills',
     icon: <FaPills className="text-8xl text-darkerGray" />,
-    link: 'dashboard/doctors',
+    link: 'pills',
   },
   {
     name: 'Settings',
     icon: <IoMdSettings className="text-8xl text-darkerGray" />,
-    link: 'dashboard/doctors',
+    link: 'settings',
   },
 ]
 
 const Dashboard = () => {
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-y-20">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 place-items-center h-full gap-y-14">
       {navigations.map((item, index) => {
         return (
-          <Link
-            key={index}
-            to={item.link}
-            className="flex flex-col items-center gap-y-2"
-          >
-            {item.icon}
-            <div className="text-xl font-medium text-lightBlue">
+          <Link key={index} to={item.link}>
+            <div className="flex justify-center mb-4">{item.icon}</div>
+            <div className="text-xl text-center font-medium text-lightBlue">
               {item.name}
             </div>
           </Link>
